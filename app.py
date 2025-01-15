@@ -4,14 +4,7 @@ import schedule
 import time
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from dotenv import load_dotenv
 import os
-
-load_dotenv()
-# Email credentials
-sender_email = os.getenv('sender_email')
-password = os.getenv('password')
-receiver_email = os.getenv('receiver_email')
 
 # Function to fetch the current price of cryptocurrency
 def get_crypto_price(crypto_id='bitcoin', currency='usd'):
@@ -22,6 +15,11 @@ def get_crypto_price(crypto_id='bitcoin', currency='usd'):
 
 # Function to send email alert
 def send_email_alert(crypto, price, threshold):
+    # Email credentials
+    sender_email = os.getenv('SENDER_EMAIL')
+    password = os.getenv('PASSWORD')
+    receiver_email = os.getenv('RECEIVER_EMAIL')
+    
     subject = f'{crypto.capitalize()} Price Alert!'
     body = f'The price of {crypto} has exceeded your threshold of {threshold}. Current price: ${price}.'
 
