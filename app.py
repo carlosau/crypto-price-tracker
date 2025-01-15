@@ -44,4 +44,14 @@ def send_email_alert(crypto, price, threshold):
     except Exception as e:
         print(f'Error sending email: {e}')
 
+# Function to check price and alert if necessary
+def check_and_alert(crypto='bitcoin', threshold=50000):
+    try:
+        price = get_crypto_price(crypto)
+        print(f'Current {crypto} price: ${price}')
+        if price >= threshold:
+            send_email_alert(crypto, price, threshold)
+    except Exception as e:
+        print(f'Error fetching data: {e}')
+
 
