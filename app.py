@@ -59,5 +59,6 @@ schedule.every(5).minutes.do(check_and_alert, crypto='bitcoin', threshold=50000)
 
 # Run the script continuously
 while True:
+    print('checking prices...')
     schedule.run_pending()
     time.sleep(1)
