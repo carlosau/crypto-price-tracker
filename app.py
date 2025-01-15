@@ -54,4 +54,10 @@ def check_and_alert(crypto='bitcoin', threshold=50000):
     except Exception as e:
         print(f'Error fetching data: {e}')
 
+# Schedule the task to check prices every 5 minutes
+schedule.every(5).minutes.do(check_and_alert, crypto='bitcoin', threshold=50000)
 
+# Run the script continuously
+while True:
+    schedule.run_pending()
+    time.sleep(1)
