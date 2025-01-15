@@ -32,3 +32,16 @@ def send_email_alert(crypto, price, threshold):
     message['Subject'] = subject
     message.attach(MIMEText(body, "plain"))
 
+    # Connect to Gmail SMTP Server
+    try:
+        server = smtplib.SMTP('smtp.gmail.com', 587)
+        server.starttls()
+        server.login(sender_email, password)
+        text = message.as_string()
+        server.sendmail(sender_email, receiver_email, text)
+        server.quit()
+        print(f'Alert sent to {receiver_email}')
+    except Exception as e:
+        print(f'Error sending email: {e}')
+
+
