@@ -1,9 +1,0 @@
-services:
-  crypto-price-tracker:
-    build: .
-    container_name: crypto-price-tracker
-    environment:
-      - PYTHONUNBUFFRED=1
-    volumes:
-      - .:/app
-    restart: always
