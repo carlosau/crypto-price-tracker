@@ -53,7 +53,7 @@ def check_and_alert(crypto='bitcoin', threshold=50000):
         print(f'Error fetching data: {e}')
 
 # Schedule the task to check prices every 5 minutes
-schedule.every(5).minutes.do(check_and_alert, crypto='bitcoin', threshold=50000)
+schedule.every(1).minutes.do(check_and_alert, crypto='bitcoin', threshold=50000)
 
 # Run the script continuously
 while True:
